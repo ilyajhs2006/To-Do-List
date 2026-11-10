@@ -1,0 +1,50 @@
+
+<div class="container">
+
+  <h1>My To-Do List</h1>
+
+  <div class="input-box">
+
+    <input
+      type="text"
+      placeholder="Enter your task..."
+      [(ngModel)]="newTask"
+    />
+
+    <button (click)="addTask()">
+      Add Task
+    </button>
+
+  </div>
+
+  <div class="task-list">
+
+    <div class="task" *ngFor="let task of tasks">
+
+      <span [class.completed]="task.completed">
+        {{ task.title }}
+      </span>
+
+      <div class="buttons">
+
+        <button
+          class="complete"
+          (click)="completeTask(task)">
+          {{ task.completed ? 'Undo' : 'Complete' }}
+        </button>
+
+        <button
+          class="delete"
+          (click)="deleteTask(task.id)">
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <p>Total Tasks: {{ tasks.length }}</p>
+
+</div>
